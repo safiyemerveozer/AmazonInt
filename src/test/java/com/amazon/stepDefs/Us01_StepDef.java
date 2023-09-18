@@ -1,6 +1,8 @@
 package com.amazon.stepDefs;
 
 import com.amazon.pages.BasePage;
+import com.amazon.utility.ConfigReader;
+import com.amazon.utility.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,11 +10,12 @@ import io.cucumber.java.en.When;
 public class Us01_StepDef extends BasePage {
     @Given("user is on the amazon home page")
     public void user_is_on_the_amazon_home_page() {
-
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
     }
     @When("user search for {string}")
-    public void user_search_for(String string) {
-
+    public void user_search_for(String string) throws InterruptedException {
+searchBox.sendKeys(string);
+Thread.sleep(12000);
     }
     @When("user click the search button")
     public void user_click_the_search_button() {

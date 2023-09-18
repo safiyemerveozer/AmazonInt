@@ -4,9 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.decorators.WebDriverDecorator;
+
+import java.time.Duration;
 
 public class Driver {
-    private Driver(){} //Singleton
+    private Driver(){}
 
     private static InheritableThreadLocal<WebDriver> driverPool=new InheritableThreadLocal<>();
     public static WebDriver getDriver(){
@@ -15,9 +18,11 @@ public class Driver {
 
             switch (browser){
                 case "chrome":
-                    ChromeOptions options=new ChromeOptions();
+                    ChromeOptions options = new ChromeOptions();
                     options.addArguments("--remote-allow-origins=*");
                     driverPool.set(new ChromeDriver(options));
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     break;
                 case "firefox":
                     driverPool.set(new FirefoxDriver());
@@ -28,7 +33,9 @@ public class Driver {
     }
 
     public static void closeDriver(){
-        driverPool.get().quit();
-        driverPool.remove();
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove();
+        }
     }
 }

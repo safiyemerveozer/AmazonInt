@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/amazon/stepDefs",
-        dryRun = true,
+        dryRun = false,
         tags = "@us1"
 )
 public class TestRunner {
