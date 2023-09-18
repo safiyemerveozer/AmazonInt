@@ -16,11 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.11.1</version>
@@ -38,8 +33,11 @@
             <version>7.11.0</version>
         </dependency>
 
-
-
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.11.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -54,7 +52,7 @@
                     <threadCount>4</threadCount>
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
-                        <include>**/*Runner*.java</include>
+                        <include>**/*TestRunner*.java</include>
                     </includes>
                 </configuration>
             </plugin>

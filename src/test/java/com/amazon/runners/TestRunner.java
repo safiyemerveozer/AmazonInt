@@ -4,18 +4,19 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
-@RunWith(Cucumber.class) //it combines step and features
+@RunWith(Cucumber.class)
 @CucumberOptions(
+
         plugin = {
                 "html:target/cucumber-report.html",
                 "rerun:target/rerun.txt",
-                "me.jvt.cucumber.report.PrettyReports:target/cucumber",
-                "json:target/cucumber.json"
+                "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/Us1.feature",
         glue = "com/amazon/stepDefs",
         dryRun = false,
         tags = "@us1"
+
 )
-public class TestRunner {
-}
+
+public class TestRunner { }

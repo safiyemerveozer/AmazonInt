@@ -16,5 +16,7 @@ public abstract class BasePage {
     @FindBy(id = "twotabsearchtextbox")
     public WebElement searchBox;
 
+    @FindBy(id = "nav-search-submit-button")
+    public WebElement searchButton;
 
 }
